@@ -20,20 +20,14 @@ class ImageCommentApiController extends Controller
         ]);
     }
 
-    protected function validateStoreRequest(Request $request)
-    {
-        $request->validate([
-            // Content must be a string and is required
-            'content' => 'required|string',
-        ]);
-    }
-
     public function store(Request $request, Image $image)
     {
-        $comment = new Comment($request->all());
-        $comment->image()->associate($image);
-        $comment->save();
-        return $comment;
+        $validated = $request->validate([
+            // Body must be a string and is required
+            'body' => 'required|string',
+        ]);
+
+        return $image->comments()->create($validated);
     }
 
 }

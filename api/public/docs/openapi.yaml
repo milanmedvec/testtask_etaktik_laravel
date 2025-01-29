@@ -22,7 +22,19 @@ paths:
                 type: array
                 items:
                   type: object
-                example: []
+                example:
+                  -
+                    id: 11
+                    first_name: John
+                    last_name: Doe
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                  -
+                    id: 12
+                    first_name: Jane
+                    last_name: Doe
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
       tags:
         - Endpoints
       security: []
@@ -44,12 +56,12 @@ paths:
                 first_name:
                   type: string
                   description: 'First Name is required and must be a string.'
-                  example: ratione
+                  example: quae
                   nullable: false
                 last_name:
                   type: string
                   description: 'Last Name is required and must be a string.'
-                  example: ducimus
+                  example: dolores
                   nullable: false
               required:
                 - first_name
@@ -62,18 +74,34 @@ paths:
       description: ''
       parameters: []
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Author] 17'
+                  id: 11
+                  first_name: John
+                  last_name: Doe
+                  created_at: '2025-01-29T20:56:41.000000Z'
+                  updated_at: '2025-01-29T20:56:41.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 11
+                  first_name:
                     type: string
-                    example: 'No query results for model [App\Models\Author] 17'
+                    example: John
+                  last_name:
+                    type: string
+                    example: Doe
+                  created_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
       tags:
         - Endpoints
       requestBody:
@@ -86,7 +114,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 9
+                  example: 2
                   nullable: false
       security: []
     put:
@@ -107,7 +135,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 13
+                  example: 9
                   nullable: false
       security: []
     delete:
@@ -124,7 +152,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the author.'
-        example: 17
+        example: 11
         required: true
         schema:
           type: integer
@@ -143,7 +171,32 @@ paths:
                 type: array
                 items:
                   type: object
-                example: []
+                example:
+                  -
+                    id: 26
+                    name: velit
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                  -
+                    id: 27
+                    name: blanditiis
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                  -
+                    id: 28
+                    name: et
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                  -
+                    id: 29
+                    name: ducimus
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                  -
+                    id: 30
+                    name: esse
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
       tags:
         - Endpoints
       security: []
@@ -165,7 +218,7 @@ paths:
                 name:
                   type: string
                   description: 'Name is required and must be a string.'
-                  example: culpa
+                  example: quae
                   nullable: false
               required:
                 - name
@@ -177,18 +230,30 @@ paths:
       description: ''
       parameters: []
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Tag] 1'
+                  id: 26
+                  name: velit
+                  created_at: '2025-01-29T20:56:41.000000Z'
+                  updated_at: '2025-01-29T20:56:41.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 26
+                  name:
                     type: string
-                    example: 'No query results for model [App\Models\Tag] 1'
+                    example: velit
+                  created_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
       tags:
         - Endpoints
       requestBody:
@@ -201,7 +266,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 4
+                  example: 1
                   nullable: false
       security: []
     put:
@@ -222,7 +287,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 6
+                  example: 1
                   nullable: false
       security: []
     delete:
@@ -239,7 +304,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the tag.'
-        example: 1
+        example: 26
         required: true
         schema:
           type: integer
@@ -258,7 +323,35 @@ paths:
                 type: array
                 items:
                   type: object
-                example: []
+                example:
+                  -
+                    id: 6
+                    body: 'This is a comment on the image.'
+                    commentable_id: 6
+                    commentable_type: App\Models\Image
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                  -
+                    id: 9
+                    body: B
+                    commentable_id: 11
+                    commentable_type: App\Models\Post
+                    created_at: '2025-01-29T20:59:46.000000Z'
+                    updated_at: '2025-01-29T20:59:46.000000Z'
+                  -
+                    id: 10
+                    body: B
+                    commentable_id: 11
+                    commentable_type: App\Models\Post
+                    created_at: '2025-01-29T20:59:53.000000Z'
+                    updated_at: '2025-01-29T20:59:53.000000Z'
+                  -
+                    id: 11
+                    body: B
+                    commentable_id: 6
+                    commentable_type: App\Models\Image
+                    created_at: '2025-01-29T21:00:47.000000Z'
+                    updated_at: '2025-01-29T21:00:47.000000Z'
       tags:
         - Endpoints
       security: []
@@ -269,18 +362,38 @@ paths:
       description: ''
       parameters: []
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Comment] 1'
+                  id: 6
+                  body: 'This is a comment on the image.'
+                  commentable_id: 6
+                  commentable_type: App\Models\Image
+                  created_at: '2025-01-29T20:56:41.000000Z'
+                  updated_at: '2025-01-29T20:56:41.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 6
+                  body:
                     type: string
-                    example: 'No query results for model [App\Models\Comment] 1'
+                    example: 'This is a comment on the image.'
+                  commentable_id:
+                    type: integer
+                    example: 6
+                  commentable_type:
+                    type: string
+                    example: App\Models\Image
+                  created_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
       tags:
         - Endpoints
       requestBody:
@@ -293,7 +406,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 6
+                  example: 4
                   nullable: false
       security: []
     put:
@@ -314,7 +427,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 8
+                  example: 19
                   nullable: false
       security: []
     delete:
@@ -331,7 +444,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the comment.'
-        example: 1
+        example: 6
         required: true
         schema:
           type: integer
@@ -350,7 +463,26 @@ paths:
                 type: array
                 items:
                   type: object
-                example: []
+                example:
+                  -
+                    id: 6
+                    author_id: 12
+                    title: 'My first image'
+                    url: 'https://example.com/image.jpg'
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    tags_ids:
+                      - 28
+                    tags:
+                      -
+                        id: 28
+                        name: et
+                        created_at: '2025-01-29T20:56:41.000000Z'
+                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        pivot:
+                          taggable_type: App\Models\Image
+                          taggable_id: 6
+                          tag_id: 28
       tags:
         - Endpoints
       security: []
@@ -372,23 +504,23 @@ paths:
                 author_id:
                   type: integer
                   description: 'Author ID is required and must be an integer (foreign key). The <code>id</code> of an existing record in the authors table.'
-                  example: 11
+                  example: 8
                   nullable: false
                 title:
                   type: string
                   description: 'Title is required and must be a string.'
-                  example: in
+                  example: doloribus
                   nullable: false
                 url:
                   type: string
                   description: 'URL is required and must be a string. Must be a valid URL.'
-                  example: 'http://strosin.org/id-et-perferendis-et-eius-fugiat-dignissimos-et'
+                  example: 'https://jones.com/voluptatem-non-aut-tenetur-temporibus.html'
                   nullable: false
                 tags_ids:
                   type: array
                   description: 'Tags IDs must be integers.'
                   example:
-                    - 2
+                    - 6
                   items:
                     type: integer
               required:
@@ -403,18 +535,95 @@ paths:
       description: ''
       parameters: []
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Image] 19'
+                  id: 6
+                  author_id: 12
+                  title: 'My first image'
+                  url: 'https://example.com/image.jpg'
+                  created_at: '2025-01-29T20:56:41.000000Z'
+                  updated_at: '2025-01-29T20:56:41.000000Z'
+                  tags_ids:
+                    - 28
+                  tags:
+                    -
+                      id: 28
+                      name: et
+                      created_at: '2025-01-29T20:56:41.000000Z'
+                      updated_at: '2025-01-29T20:56:41.000000Z'
+                      pivot:
+                        taggable_type: App\Models\Image
+                        taggable_id: 6
+                        tag_id: 28
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 6
+                  author_id:
+                    type: integer
+                    example: 12
+                  title:
                     type: string
-                    example: 'No query results for model [App\Models\Image] 19'
+                    example: 'My first image'
+                  url:
+                    type: string
+                    example: 'https://example.com/image.jpg'
+                  created_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
+                  tags_ids:
+                    type: array
+                    example:
+                      - 28
+                    items:
+                      type: integer
+                  tags:
+                    type: array
+                    example:
+                      -
+                        id: 28
+                        name: et
+                        created_at: '2025-01-29T20:56:41.000000Z'
+                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        pivot:
+                          taggable_type: App\Models\Image
+                          taggable_id: 6
+                          tag_id: 28
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 28
+                        name:
+                          type: string
+                          example: et
+                        created_at:
+                          type: string
+                          example: '2025-01-29T20:56:41.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2025-01-29T20:56:41.000000Z'
+                        pivot:
+                          type: object
+                          properties:
+                            taggable_type:
+                              type: string
+                              example: App\Models\Image
+                            taggable_id:
+                              type: integer
+                              example: 6
+                            tag_id:
+                              type: integer
+                              example: 28
       tags:
         - Endpoints
       requestBody:
@@ -427,7 +636,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 3
+                  example: 8
                   nullable: false
       security: []
     put:
@@ -448,7 +657,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 2
+                  example: 4
                   nullable: false
       security: []
     delete:
@@ -465,7 +674,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the image.'
-        example: 19
+        example: 6
         required: true
         schema:
           type: integer
@@ -476,18 +685,29 @@ paths:
       description: ''
       parameters: []
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
                 example:
-                  message: 'No query results for model [App\Models\Image] 12'
-                properties:
-                  message:
-                    type: string
-                    example: 'No query results for model [App\Models\Image] 12'
+                  -
+                    id: 6
+                    body: 'This is a comment on the image.'
+                    commentable_id: 6
+                    commentable_type: App\Models\Image
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                  -
+                    id: 11
+                    body: B
+                    commentable_id: 6
+                    commentable_type: App\Models\Image
+                    created_at: '2025-01-29T21:00:47.000000Z'
+                    updated_at: '2025-01-29T21:00:47.000000Z'
       tags:
         - Endpoints
       security: []
@@ -499,13 +719,27 @@ paths:
       responses: {  }
       tags:
         - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                  description: 'Body must be a string and is required.'
+                  example: non
+                  nullable: false
+              required:
+                - body
       security: []
     parameters:
       -
         in: path
         name: image_id
         description: 'The ID of the image.'
-        example: 12
+        example: 6
         required: true
         schema:
           type: integer
@@ -524,7 +758,45 @@ paths:
                 type: array
                 items:
                   type: object
-                example: []
+                example:
+                  -
+                    id: 11
+                    author_id: 11
+                    title: 'My first post'
+                    body: 'This is the body of my first post.'
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    tags_ids:
+                      - 27
+                      - 28
+                    tags:
+                      -
+                        id: 27
+                        name: blanditiis
+                        created_at: '2025-01-29T20:56:41.000000Z'
+                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        pivot:
+                          taggable_type: App\Models\Post
+                          taggable_id: 11
+                          tag_id: 27
+                      -
+                        id: 28
+                        name: et
+                        created_at: '2025-01-29T20:56:41.000000Z'
+                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        pivot:
+                          taggable_type: App\Models\Post
+                          taggable_id: 11
+                          tag_id: 28
+                  -
+                    id: 12
+                    author_id: 11
+                    title: 'My second post'
+                    body: 'This is the body of my second post.'
+                    created_at: '2025-01-29T20:56:41.000000Z'
+                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    tags_ids: []
+                    tags: []
       tags:
         - Endpoints
       security: []
@@ -546,23 +818,23 @@ paths:
                 author_id:
                   type: integer
                   description: 'Author ID is required and must be an integer (foreign key). The <code>id</code> of an existing record in the authors table.'
-                  example: 16
+                  example: 17
                   nullable: false
                 title:
                   type: string
                   description: 'Title is required and must be a string.'
-                  example: aperiam
+                  example: cum
                   nullable: false
                 body:
                   type: string
                   description: 'Body is required and must be a string.'
-                  example: velit
+                  example: totam
                   nullable: false
                 tags_ids:
                   type: array
                   description: 'Tags IDs must be integers.'
                   example:
-                    - 6
+                    - 16
                   items:
                     type: integer
               required:
@@ -577,18 +849,115 @@ paths:
       description: ''
       parameters: []
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Post] 18'
+                  id: 11
+                  author_id: 11
+                  title: 'My first post'
+                  body: 'This is the body of my first post.'
+                  created_at: '2025-01-29T20:56:41.000000Z'
+                  updated_at: '2025-01-29T20:56:41.000000Z'
+                  tags_ids:
+                    - 27
+                    - 28
+                  tags:
+                    -
+                      id: 27
+                      name: blanditiis
+                      created_at: '2025-01-29T20:56:41.000000Z'
+                      updated_at: '2025-01-29T20:56:41.000000Z'
+                      pivot:
+                        taggable_type: App\Models\Post
+                        taggable_id: 11
+                        tag_id: 27
+                    -
+                      id: 28
+                      name: et
+                      created_at: '2025-01-29T20:56:41.000000Z'
+                      updated_at: '2025-01-29T20:56:41.000000Z'
+                      pivot:
+                        taggable_type: App\Models\Post
+                        taggable_id: 11
+                        tag_id: 28
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 11
+                  author_id:
+                    type: integer
+                    example: 11
+                  title:
                     type: string
-                    example: 'No query results for model [App\Models\Post] 18'
+                    example: 'My first post'
+                  body:
+                    type: string
+                    example: 'This is the body of my first post.'
+                  created_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2025-01-29T20:56:41.000000Z'
+                  tags_ids:
+                    type: array
+                    example:
+                      - 27
+                      - 28
+                    items:
+                      type: integer
+                  tags:
+                    type: array
+                    example:
+                      -
+                        id: 27
+                        name: blanditiis
+                        created_at: '2025-01-29T20:56:41.000000Z'
+                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        pivot:
+                          taggable_type: App\Models\Post
+                          taggable_id: 11
+                          tag_id: 27
+                      -
+                        id: 28
+                        name: et
+                        created_at: '2025-01-29T20:56:41.000000Z'
+                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        pivot:
+                          taggable_type: App\Models\Post
+                          taggable_id: 11
+                          tag_id: 28
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 27
+                        name:
+                          type: string
+                          example: blanditiis
+                        created_at:
+                          type: string
+                          example: '2025-01-29T20:56:41.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2025-01-29T20:56:41.000000Z'
+                        pivot:
+                          type: object
+                          properties:
+                            taggable_type:
+                              type: string
+                              example: App\Models\Post
+                            taggable_id:
+                              type: integer
+                              example: 11
+                            tag_id:
+                              type: integer
+                              example: 27
       tags:
         - Endpoints
       requestBody:
@@ -601,7 +970,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 3
+                  example: 1
                   nullable: false
       security: []
     put:
@@ -622,7 +991,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 16
+                  example: 18
                   nullable: false
       security: []
     delete:
@@ -639,7 +1008,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the post.'
-        example: 18
+        example: 11
         required: true
         schema:
           type: integer
@@ -650,18 +1019,29 @@ paths:
       description: ''
       parameters: []
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
                 example:
-                  message: 'No query results for model [App\Models\Post] 12'
-                properties:
-                  message:
-                    type: string
-                    example: 'No query results for model [App\Models\Post] 12'
+                  -
+                    id: 9
+                    body: B
+                    commentable_id: 11
+                    commentable_type: App\Models\Post
+                    created_at: '2025-01-29T20:59:46.000000Z'
+                    updated_at: '2025-01-29T20:59:46.000000Z'
+                  -
+                    id: 10
+                    body: B
+                    commentable_id: 11
+                    commentable_type: App\Models\Post
+                    created_at: '2025-01-29T20:59:53.000000Z'
+                    updated_at: '2025-01-29T20:59:53.000000Z'
       tags:
         - Endpoints
       security: []
@@ -673,13 +1053,27 @@ paths:
       responses: {  }
       tags:
         - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                  description: 'Body must be a string and is required.'
+                  example: repudiandae
+                  nullable: false
+              required:
+                - body
       security: []
     parameters:
       -
         in: path
         name: post_id
         description: 'The ID of the post.'
-        example: 12
+        example: 11
         required: true
         schema:
           type: integer
