@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Classes\Pagination;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,19 @@ abstract class ApiController extends Controller
         $this->model = $model;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $count = $this->model->count();
-        $items = $this->model->all();
+        $pagination = new Pagination($request);
+        $filter = $pagination->getFilter();
+        $range = $pagination->getRange();
+        $sort = $pagination->getSort();
+
+        $count = $this->model->where($filter)->count();
+        $items = $this->model->where($filter)
+            ->orderBy($sort[0], $sort[1])
+            ->skip($range[0])
+            ->take($range[1] - $range[0] + 1)
+            ->get();
 
         return response()->json($items, 200, [
             'Content-Range' => $count,
