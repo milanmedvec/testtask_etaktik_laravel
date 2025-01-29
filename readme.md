@@ -1,15 +1,55 @@
-admin
-cd admin
-npm ci
-npm run dev
+# Test Task / etaktik / Laravel
 
-api
-cp .env.example .env
+## React Admin
+
+You can install and run the React Admin by following the steps below:
+
+```bash
+cd admin
+
+# install dependencies
+npm ci
+
+# run the server
+npm run dev
+```
+
+and open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Laravel API
+
+You have to run database server, you can do it by running the following command:
+
+```bash
+docker compose -f docker-compose.dev.yml up
+```
+
+Now you can install and run the Laravel API by following the steps below:
+
+```bash
 cd api
+
+# setup the environment
+cp .env.example .env
+
+# install dependencies
 composer install
+
+# generate the application key
 php artisan key:generate
+
+# run the migrations and seed the database
 php artisan migrate
 php artisan db:seed
-php artisan serve
 
-docker compose -f docker-compose.dev.yml up
+# run the server
+php artisan serve
+```
+
+and open [http://localhost:8000](http://localhost:8000) in your browser.
+
+Also you can run basic tests by running the following command:
+
+```bash
+php artisan test
+```
