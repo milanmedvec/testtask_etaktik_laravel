@@ -22,7 +22,7 @@ class CommentsTest extends TestCase
     /**
      * A basic test example.
      */
-    public function test_the_application_returns_a_successful_response(): void
+    public function test_successful_response(): void
     {
         $response = $this->get('/comments');
 
@@ -31,4 +31,22 @@ class CommentsTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson($comments->toArray());
     }
+
+    public function test_successful_response_for_a_single_comment(): void
+    {
+        $comment = Comment::first();
+
+        $response = $this->get('/comments/' . $comment->id);
+
+        $response->assertStatus(200);
+        $response->assertJson($comment->toArray());
+    }
+
+    public function test_not_found_response_for_an_invalid_comment(): void
+    {
+        $response = $this->get('/comments/999');
+
+        $response->assertStatus(404);
+    }
+
 }
