@@ -5,15 +5,21 @@ namespace App\Http\Controllers\Api;
 use App\Classes\Pagination;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Cache;
 
-abstract class ApiController extends Controller
+abstract class ApiController extends Controller implements HasMiddleware
 {
     protected $model;
 
     public function __construct($model)
     {
         $this->model = $model;
+    }
+
+    public static function middleware()
+    {
+        return 'throttle:global';
     }
 
     public function index(Request $request)
