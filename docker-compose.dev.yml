@@ -1,0 +1,30 @@
+services:
+  testtask_etaktik_laravel_db:
+    restart: "no"
+    image: postgres
+    container_name: testtask_etaktik_laravel_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./data-psql/:/var/lib/postgresql/data
+    networks:
+      - testtask_etaktik_laravel_network
+    ports:
+      - 5432:5432
+
+  testtask_etaktik_laravel_adminer:
+    restart: "no"
+    image: adminer
+    container_name: testtask_etaktik_laravel_adminer
+    depends_on:
+      - testtask_etaktik_laravel_db
+    networks:
+      - testtask_etaktik_laravel_network
+    ports:
+      - 8082:8080
+
+networks:
+  testtask_etaktik_laravel_network:
+    name: testtask_etaktik_laravel_network
