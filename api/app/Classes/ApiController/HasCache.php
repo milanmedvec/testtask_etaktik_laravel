@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Classes\ApiController;
 
 trait HasCache
 {

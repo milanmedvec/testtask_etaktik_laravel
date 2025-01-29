@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Classes\ApiController;
 
 use App\Classes\Pagination;
 use Illuminate\Http\Request;

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Classes\ApiController\HasDestroy;
+use App\Classes\ApiController\HasIndex;
+use App\Classes\ApiController\HasShow;
+use App\Classes\ApiController\HasUpdate;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
