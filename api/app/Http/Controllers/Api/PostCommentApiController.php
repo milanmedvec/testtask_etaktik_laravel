@@ -23,6 +23,7 @@ class PostCommentApiController extends Controller
     protected function validateStoreRequest(Request $request)
     {
         $request->validate([
+            // Content must be a string and is required
             'content' => 'required|string',
         ]);
     }

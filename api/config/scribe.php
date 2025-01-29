@@ -35,6 +35,8 @@ return [
             // Exclude these routes even if they matched the rules above.
             'exclude' => [
                 // 'GET /health', 'admin.*'
+                "GET /up",
+                "GET /storage/*",
             ],
         ],
     ],

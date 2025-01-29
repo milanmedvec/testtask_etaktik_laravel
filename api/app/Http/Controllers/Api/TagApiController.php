@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Classes\ApiController\HasCreate;
 use App\Classes\ApiController\HasDestroy;
 use App\Classes\ApiController\HasIndex;
 use App\Classes\ApiController\HasShow;
-use App\Classes\ApiController\HasUpdate;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class TagApiController extends ApiController
 {
     use HasIndex;
-    use HasCreate;
     use HasShow;
-    use HasUpdate;
     use HasDestroy;
 
     public function __construct()
@@ -23,17 +20,30 @@ class TagApiController extends ApiController
         parent::__construct(new Tag());
     }
 
-    protected function validateStoreRequest(Request $request)
+
+    public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
+            // Name is required and must be a string
             'name' => 'required|string',
         ]);
+
+        return Tag::create($validated);
     }
 
-    protected function validateUpdateRequest(Request $request)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $validated = $request->validate([
+            // Name must be a string
             'name' => 'string',
         ]);
+
+        $cacheKey = $this->getEntityCacheKey($id);
+        Cache::forget($cacheKey);
+
+        $tag = Tag::findOrFail($id);
+        $tag->update($validated);
+
+        return $tag;
     }
 }

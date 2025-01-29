@@ -18,12 +18,14 @@ and open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Laravel API
 
+### Database
 You have to run database server, you can do it by running the following command:
 
 ```bash
 docker compose -f docker-compose.dev.yml up
 ```
 
+### API server
 Now you can install and run the Laravel API by following the steps below:
 
 ```bash
@@ -48,8 +50,19 @@ php artisan serve
 
 and open [http://localhost:8000](http://localhost:8000) in your browser.
 
+### Tests
 Also you can run basic tests by running the following command:
 
 ```bash
 php artisan test
 ```
+
+### OpenAPI specification
+
+You can regenerate the OpenAPI specification by running the following command:
+
+```bash
+php artisan scribe:generate
+```
+
+and open [http://localhost:8000/docs](http://localhost:8000/docs) in your browser.

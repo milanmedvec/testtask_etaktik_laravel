@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Classes\ApiController\HasCreate;
 use App\Classes\ApiController\HasDestroy;
 use App\Classes\ApiController\HasIndex;
 use App\Classes\ApiController\HasShow;
-use App\Classes\ApiController\HasUpdate;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class AuthorApiController extends ApiController
 {
     use HasIndex;
-    use HasCreate;
     use HasShow;
-    use HasUpdate;
     use HasDestroy;
 
     public function __construct()
@@ -23,19 +20,33 @@ class AuthorApiController extends ApiController
         parent::__construct(new Author());
     }
 
-    protected function validateStoreRequest(Request $request)
+    public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
+            // First Name is required and must be a string
             'first_name' => 'required|string',
+            // Last Name is required and must be a string
             'last_name' => 'required|string',
         ]);
+
+        return Author::create($validated);
     }
 
-    protected function validateUpdateRequest(Request $request)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $cacheKey = $this->getEntityCacheKey($id);
+        Cache::forget($cacheKey);
+
+        $validated = $request->validate([
+            // First Name must be a string
             'first_name' => 'string',
+            // Last Name must be a string
             'last_name' => 'string',
         ]);
+
+        $model = Author::findOrFail($id);
+        $model->update($validated);
+
+        return $model;
     }
 }

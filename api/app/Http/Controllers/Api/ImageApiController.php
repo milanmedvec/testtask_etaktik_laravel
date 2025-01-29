@@ -2,24 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Classes\ApiController\HasCreate;
 use App\Classes\ApiController\HasDestroy;
 use App\Classes\ApiController\HasIndex;
 use App\Classes\ApiController\HasShow;
-use App\Classes\ApiController\HasUpdate;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ImageApiController extends ApiController
 {
     use HasIndex;
-    use HasCreate {
-        store as protected storeImage;
-    }
     use HasShow;
-    use HasUpdate {
-        update as protected updateImage;
-    }
     use HasDestroy;
 
     public function __construct()
@@ -27,50 +20,58 @@ class ImageApiController extends ApiController
         parent::__construct(new Image());
     }
 
-    protected function validateStoreRequest(Request $request)
-    {
-        $request->validate([
-            'author_id' => 'required|integer',
-            'title' => 'required|string',
-            'url' => 'required|string',
-            'tags_ids' => 'array',
-            'tags_ids.*' => 'integer',
-        ]);
-    }
-
     public function store(Request $request)
     {
-        $model = $this->storeImage($request);
+        $validated = $request->validate([
+            // Author ID is required and must be an integer (foreign key)
+            'author_id' => 'required|integer|exists:authors,id',
+            // Title is required and must be a string
+            'title' => 'required|string',
+            // URL is required and must be a string
+            'url' => 'required|url',
+            // Tags IDs is an array of integers
+            'tags_ids' => 'array',
+            // Tags IDs must be integers
+            'tags_ids.*' => 'integer:exists:tags,id',
+        ]);
+
+        $image = Image::create($validated);
 
         $tags = $request->input('tags_ids');
         if (is_array($tags)) {
-            $model->tags()->sync($tags);
+            $image->tags()->sync($tags);
         }
 
-        return $model;
-    }
-
-    protected function validateUpdateRequest(Request $request)
-    {
-        $request->validate([
-            'author_id' => 'integer',
-            'title' => 'string',
-            'url' => 'string',
-            'tags_ids' => 'array',
-            'tags_ids.*' => 'integer',
-        ]);
+        return $image;
     }
 
     public function update(Request $request, $id)
     {
-        $model = $this->updateImage($request, $id);
+        $cacheKey = $this->getEntityCacheKey($id);
+        Cache::forget($cacheKey);
+
+        $validated = $request->validate([
+            // Author ID must be an integer (foreign key)
+            'author_id' => 'integer|exists:authors,id',
+            // Title must be a string
+            'title' => 'string',
+            // URL must be a string
+            'url' => 'url',
+            // Tags IDs is an array of integers
+            'tags_ids' => 'array',
+            // Tags IDs must be integers
+            'tags_ids.*' => 'integer:exists:tags,id',
+        ]);
+
+        $image = Image::findOrFail($id);
+        $image->update($validated);
 
         $tags = $request->input('tags_ids');
         if (is_array($tags)) {
-            $model->tags()->sync($tags);
+            $image->tags()->sync($tags);
         }
 
-        return $model;
+        return $image;
     }
 
 }

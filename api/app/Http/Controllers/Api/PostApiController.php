@@ -2,24 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Classes\ApiController\HasCreate;
 use App\Classes\ApiController\HasDestroy;
 use App\Classes\ApiController\HasIndex;
 use App\Classes\ApiController\HasShow;
-use App\Classes\ApiController\HasUpdate;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PostApiController extends ApiController
 {
     use HasIndex;
-    use HasCreate {
-        store as protected storePost;
-    }
     use HasShow;
-    use HasUpdate {
-        update as protected updatePost;
-    }
     use HasDestroy;
 
     public function __construct()
@@ -27,49 +20,57 @@ class PostApiController extends ApiController
         parent::__construct(new Post());
     }
 
-    protected function validateStoreRequest(Request $request)
-    {
-        $request->validate([
-            'author_id' => 'required|integer',
-            'title' => 'required|string',
-            'body' => 'required|string',
-            'tags_ids' => 'array',
-            'tags_ids.*' => 'integer',
-        ]);
-    }
-
     public function store(Request $request)
     {
-        $model = $this->storePost($request);
+        $validated = $request->validate([
+            // Author ID is required and must be an integer (foreign key)
+            'author_id' => 'required|integer|exists:authors,id',
+            // Title is required and must be a string
+            'title' => 'required|string',
+            // Body is required and must be a string
+            'body' => 'required|string',
+            // Tags IDs is an array of integers
+            'tags_ids' => 'array',
+            // Tags IDs must be integers
+            'tags_ids.*' => 'integer:exists:tags,id',
+        ]);
+
+        $post = Post::create($validated);
 
         $tags = $request->input('tags_ids');
         if (is_array($tags)) {
-            $model->tags()->sync($tags);
+            $post->tags()->sync($tags);
         }
 
-        return $model;
-    }
-
-    protected function validateUpdateRequest(Request $request)
-    {
-        $request->validate([
-            'author_id' => 'integer',
-            'title' => 'string',
-            'body' => 'string',
-            'tags_ids' => 'array',
-            'tags_ids.*' => 'integer',
-        ]);
+        return $post;
     }
 
     public function update(Request $request, $id)
     {
-        $model = $this->updatePost($request, $id);
+        $validated = $request->validate([
+            // Author ID must be an integer (foreign key)
+            'author_id' => 'integer|exists:authors,id',
+            // Title must be a string
+            'title' => 'string',
+            // Body must be a string
+            'body' => 'string',
+            // Tags IDs is an array of integers
+            'tags_ids' => 'array',
+            // Tags IDs must be integers
+            'tags_ids.*' => 'integer:exists:tags,id',
+        ]);
+
+        $cacheKey = $this->getEntityCacheKey($id);
+        Cache::forget($cacheKey);
+
+        $post = Post::findOrFail($id);
+        $post->update($validated);
 
         $tags = $request->input('tags_ids');
         if (is_array($tags)) {
-            $model->tags()->sync($tags);
+            $post->tags()->sync($tags);
         }
 
-        return $model;
+        return $post;
     }
 }
