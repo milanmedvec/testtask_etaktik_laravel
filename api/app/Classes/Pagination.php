@@ -16,7 +16,7 @@ class Pagination
         $this->request = $request;
     }
 
-    public function getFilter(): array
+    public function applyFilter($query)
     {
         $filterSe = $this->request->input('filter', null);
         $filter = json_decode($filterSe, true);
@@ -24,11 +24,13 @@ class Pagination
         if ($filter === null) {
             return [];
         } else {
-            $result = [];
             foreach ($filter as $key => $value) {
-                $result[] = [$key, 'like', '%' . $value . '%'];
+                if (is_array($value)) {
+                    $query->whereIn($key, $value);
+                } else {
+                    $query->where($key, "like", "%$value%");
+                }
             }
-            return $result;
         }
     }
 
