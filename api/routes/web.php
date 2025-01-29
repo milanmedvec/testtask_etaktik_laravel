@@ -2,14 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-function generateCommentsResourceRoutes($controllerName, $resourceName)
-{
-    $controllerName = "\\App\\Http\\Controllers\\Api\\" . $controllerName;
+if (!function_exists('generateCommentsResourceRoutes')) {
+    function generateCommentsResourceRoutes($controllerName, $resourceName)
+    {
+        $controllerName = "\\App\\Http\\Controllers\\Api\\" . $controllerName;
 
-    Route::prefix($resourceName)->group(function() use($controllerName) {
-        Route::get("/", $controllerName . "@index");
-        Route::post("/", $controllerName . "@store");
-    });
+        Route::prefix($resourceName)->group(function() use($controllerName) {
+            Route::get("/", $controllerName . "@index");
+            Route::post("/", $controllerName . "@store");
+        });
+    }
 }
 
 Route::apiResource('authors', '\App\Http\Controllers\Api\AuthorApiController');
