@@ -8,6 +8,7 @@ use App\Classes\ApiController\HasShow;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Validator;
 
 class CommentApiController extends ApiController
 {
@@ -30,6 +31,14 @@ class CommentApiController extends ApiController
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'int',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'Invalid ID'], 400);
+        }
+
         $cacheKey = $this->getEntityCacheKey($id);
         Cache::forget($cacheKey);
 

@@ -8,6 +8,7 @@ use App\Classes\ApiController\HasShow;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Validator;
 
 class PostApiController extends ApiController
 {
@@ -47,6 +48,14 @@ class PostApiController extends ApiController
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'int',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'Invalid ID'], 400);
+        }
+
         $validated = $request->validate([
             // Author ID must be an integer (foreign key)
             'author_id' => 'integer|exists:authors,id',

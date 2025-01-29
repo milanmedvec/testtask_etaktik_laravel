@@ -3,6 +3,7 @@
 namespace App\Classes\ApiController;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Validator;
 
 trait HasShow
 {
@@ -11,6 +12,14 @@ trait HasShow
 
     public function show($id)
     {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'int',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'Invalid ID'], 400);
+        }
+
         $cacheKey = $this->getEntityCacheKey($id);
         $value = Cache::get($cacheKey);
         if ($value) {

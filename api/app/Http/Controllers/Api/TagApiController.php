@@ -8,6 +8,7 @@ use App\Classes\ApiController\HasShow;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Validator;
 
 class TagApiController extends ApiController
 {
@@ -33,6 +34,14 @@ class TagApiController extends ApiController
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'int',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'Invalid ID'], 400);
+        }
+
         $validated = $request->validate([
             // Name must be a string
             'name' => 'string',
