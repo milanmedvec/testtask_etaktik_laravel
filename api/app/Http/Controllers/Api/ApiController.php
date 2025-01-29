@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Classes\Pagination;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 abstract class ApiController extends Controller
 {
@@ -36,7 +37,15 @@ abstract class ApiController extends Controller
 
     public function show($id)
     {
-        return $this->model->findOrFail($id);
+        $cacheKey = $this->getEntityCacheKey($id);
+        $value = Cache::get($cacheKey);
+        if ($value) {
+            return $value;
+        }
+
+        $entity = $this->model->findOrFail($id);
+        Cache::put($cacheKey, $entity, 60);
+        return $entity;
     }
 
     public function store(Request $request)
@@ -46,6 +55,9 @@ abstract class ApiController extends Controller
 
     public function update(Request $request, $id)
     {
+        $cacheKey = $this->getEntityCacheKey($id);
+        Cache::forget($cacheKey);
+
         $model = $this->model->findOrFail($id);
         $model->update($request->all());
         return $model;
@@ -53,8 +65,19 @@ abstract class ApiController extends Controller
 
     public function destroy($id)
     {
+        $cacheKey = $this->getEntityCacheKey($id);
+        Cache::forget($cacheKey);
+
         $model = $this->model->findOrFail($id);
         $model->delete();
         return $model;
+    }
+
+    // -----
+
+    private function getEntityCacheKey($id)
+    {
+        $modelName = $this->model->getModel()->getTable();
+        return $modelName . '.' . $id;
     }
 }
