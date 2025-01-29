@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
-class ApiController extends Controller implements HasMiddleware
+abstract class ApiController extends Controller implements HasMiddleware
 {
     use HasModel;
 

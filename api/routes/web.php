@@ -23,7 +23,6 @@ generateCommentsResourceRoutes('ImageCommentApiController', 'images/{image}/comm
 Route::apiResource('posts', '\App\Http\Controllers\Api\PostApiController');
 generateCommentsResourceRoutes('PostCommentApiController', 'posts/{post}/comments');
 
-// TODO(milan.medvec) 404 route
 // TODO(milan.medvec) open api route
 
 Route::get('/', function () {
