@@ -22,7 +22,6 @@ class TagApiController extends ApiController
         parent::__construct(new Tag());
     }
 
-
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
