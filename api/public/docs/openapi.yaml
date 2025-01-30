@@ -24,17 +24,17 @@ paths:
                   type: object
                 example:
                   -
-                    id: 11
+                    id: 58
                     first_name: John
                     last_name: Doe
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
                   -
-                    id: 12
+                    id: 59
                     first_name: Jane
                     last_name: Doe
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
       tags:
         - Endpoints
       security: []
@@ -56,12 +56,12 @@ paths:
                 first_name:
                   type: string
                   description: 'First Name is required and must be a string.'
-                  example: quae
+                  example: et
                   nullable: false
                 last_name:
                   type: string
                   description: 'Last Name is required and must be a string.'
-                  example: dolores
+                  example: quos
                   nullable: false
               required:
                 - first_name
@@ -81,15 +81,15 @@ paths:
               schema:
                 type: object
                 example:
-                  id: 11
+                  id: 58
                   first_name: John
                   last_name: Doe
-                  created_at: '2025-01-29T20:56:41.000000Z'
-                  updated_at: '2025-01-29T20:56:41.000000Z'
+                  created_at: '2025-01-30T07:53:05.000000Z'
+                  updated_at: '2025-01-30T07:53:05.000000Z'
                 properties:
                   id:
                     type: integer
-                    example: 11
+                    example: 58
                   first_name:
                     type: string
                     example: John
@@ -98,10 +98,10 @@ paths:
                     example: Doe
                   created_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
                   updated_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
       tags:
         - Endpoints
       requestBody:
@@ -114,7 +114,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 2
+                  example: 7
                   nullable: false
       security: []
     put:
@@ -135,7 +135,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 9
+                  example: 15
                   nullable: false
       security: []
     delete:
@@ -146,13 +146,25 @@ paths:
       responses: {  }
       tags:
         - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 20
+                  nullable: false
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the author.'
-        example: 11
+        example: 58
         required: true
         schema:
           type: integer
@@ -173,30 +185,30 @@ paths:
                   type: object
                 example:
                   -
-                    id: 26
-                    name: velit
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    id: 142
+                    name: soluta
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
                   -
-                    id: 27
-                    name: blanditiis
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    id: 143
+                    name: soluta
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
                   -
-                    id: 28
-                    name: et
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    id: 144
+                    name: nemo
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
                   -
-                    id: 29
-                    name: ducimus
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    id: 145
+                    name: maxime
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
                   -
-                    id: 30
-                    name: esse
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    id: 146
+                    name: fugiat
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
       tags:
         - Endpoints
       security: []
@@ -218,7 +230,7 @@ paths:
                 name:
                   type: string
                   description: 'Name is required and must be a string.'
-                  example: quae
+                  example: nobis
                   nullable: false
               required:
                 - name
@@ -237,23 +249,23 @@ paths:
               schema:
                 type: object
                 example:
-                  id: 26
-                  name: velit
-                  created_at: '2025-01-29T20:56:41.000000Z'
-                  updated_at: '2025-01-29T20:56:41.000000Z'
+                  id: 142
+                  name: soluta
+                  created_at: '2025-01-30T07:53:05.000000Z'
+                  updated_at: '2025-01-30T07:53:05.000000Z'
                 properties:
                   id:
                     type: integer
-                    example: 26
+                    example: 142
                   name:
                     type: string
-                    example: velit
+                    example: soluta
                   created_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
                   updated_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
       tags:
         - Endpoints
       requestBody:
@@ -287,7 +299,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 1
+                  example: 3
                   nullable: false
       security: []
     delete:
@@ -298,13 +310,25 @@ paths:
       responses: {  }
       tags:
         - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 10
+                  nullable: false
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the tag.'
-        example: 26
+        example: 142
         required: true
         schema:
           type: integer
@@ -325,33 +349,12 @@ paths:
                   type: object
                 example:
                   -
-                    id: 6
+                    id: 30
                     body: 'This is a comment on the image.'
-                    commentable_id: 6
+                    commentable_id: 30
                     commentable_type: App\Models\Image
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
-                  -
-                    id: 9
-                    body: B
-                    commentable_id: 11
-                    commentable_type: App\Models\Post
-                    created_at: '2025-01-29T20:59:46.000000Z'
-                    updated_at: '2025-01-29T20:59:46.000000Z'
-                  -
-                    id: 10
-                    body: B
-                    commentable_id: 11
-                    commentable_type: App\Models\Post
-                    created_at: '2025-01-29T20:59:53.000000Z'
-                    updated_at: '2025-01-29T20:59:53.000000Z'
-                  -
-                    id: 11
-                    body: B
-                    commentable_id: 6
-                    commentable_type: App\Models\Image
-                    created_at: '2025-01-29T21:00:47.000000Z'
-                    updated_at: '2025-01-29T21:00:47.000000Z'
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
       tags:
         - Endpoints
       security: []
@@ -369,31 +372,31 @@ paths:
               schema:
                 type: object
                 example:
-                  id: 6
+                  id: 30
                   body: 'This is a comment on the image.'
-                  commentable_id: 6
+                  commentable_id: 30
                   commentable_type: App\Models\Image
-                  created_at: '2025-01-29T20:56:41.000000Z'
-                  updated_at: '2025-01-29T20:56:41.000000Z'
+                  created_at: '2025-01-30T07:53:05.000000Z'
+                  updated_at: '2025-01-30T07:53:05.000000Z'
                 properties:
                   id:
                     type: integer
-                    example: 6
+                    example: 30
                   body:
                     type: string
                     example: 'This is a comment on the image.'
                   commentable_id:
                     type: integer
-                    example: 6
+                    example: 30
                   commentable_type:
                     type: string
                     example: App\Models\Image
                   created_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
                   updated_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
       tags:
         - Endpoints
       requestBody:
@@ -406,7 +409,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 4
+                  example: 8
                   nullable: false
       security: []
     put:
@@ -438,13 +441,25 @@ paths:
       responses: {  }
       tags:
         - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 15
+                  nullable: false
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the comment.'
-        example: 6
+        example: 30
         required: true
         schema:
           type: integer
@@ -465,24 +480,24 @@ paths:
                   type: object
                 example:
                   -
-                    id: 6
-                    author_id: 12
+                    id: 30
+                    author_id: 59
                     title: 'My first image'
                     url: 'https://example.com/image.jpg'
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
                     tags_ids:
-                      - 28
+                      - 146
                     tags:
                       -
-                        id: 28
-                        name: et
-                        created_at: '2025-01-29T20:56:41.000000Z'
-                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        id: 146
+                        name: fugiat
+                        created_at: '2025-01-30T07:53:05.000000Z'
+                        updated_at: '2025-01-30T07:53:05.000000Z'
                         pivot:
                           taggable_type: App\Models\Image
-                          taggable_id: 6
-                          tag_id: 28
+                          taggable_id: 30
+                          tag_id: 146
       tags:
         - Endpoints
       security: []
@@ -504,23 +519,23 @@ paths:
                 author_id:
                   type: integer
                   description: 'Author ID is required and must be an integer (foreign key). The <code>id</code> of an existing record in the authors table.'
-                  example: 8
+                  example: 12
                   nullable: false
                 title:
                   type: string
                   description: 'Title is required and must be a string.'
-                  example: doloribus
+                  example: quos
                   nullable: false
                 url:
                   type: string
                   description: 'URL is required and must be a string. Must be a valid URL.'
-                  example: 'https://jones.com/voluptatem-non-aut-tenetur-temporibus.html'
+                  example: 'https://www.lebsack.info/ex-explicabo-ut-eaque-non-et'
                   nullable: false
                 tags_ids:
                   type: array
                   description: 'Tags IDs must be integers.'
                   example:
-                    - 6
+                    - 15
                   items:
                     type: integer
               required:
@@ -542,31 +557,31 @@ paths:
               schema:
                 type: object
                 example:
-                  id: 6
-                  author_id: 12
+                  id: 30
+                  author_id: 59
                   title: 'My first image'
                   url: 'https://example.com/image.jpg'
-                  created_at: '2025-01-29T20:56:41.000000Z'
-                  updated_at: '2025-01-29T20:56:41.000000Z'
+                  created_at: '2025-01-30T07:53:05.000000Z'
+                  updated_at: '2025-01-30T07:53:05.000000Z'
                   tags_ids:
-                    - 28
+                    - 146
                   tags:
                     -
-                      id: 28
-                      name: et
-                      created_at: '2025-01-29T20:56:41.000000Z'
-                      updated_at: '2025-01-29T20:56:41.000000Z'
+                      id: 146
+                      name: fugiat
+                      created_at: '2025-01-30T07:53:05.000000Z'
+                      updated_at: '2025-01-30T07:53:05.000000Z'
                       pivot:
                         taggable_type: App\Models\Image
-                        taggable_id: 6
-                        tag_id: 28
+                        taggable_id: 30
+                        tag_id: 146
                 properties:
                   id:
                     type: integer
-                    example: 6
+                    example: 30
                   author_id:
                     type: integer
-                    example: 12
+                    example: 59
                   title:
                     type: string
                     example: 'My first image'
@@ -575,43 +590,43 @@ paths:
                     example: 'https://example.com/image.jpg'
                   created_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
                   updated_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
                   tags_ids:
                     type: array
                     example:
-                      - 28
+                      - 146
                     items:
                       type: integer
                   tags:
                     type: array
                     example:
                       -
-                        id: 28
-                        name: et
-                        created_at: '2025-01-29T20:56:41.000000Z'
-                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        id: 146
+                        name: fugiat
+                        created_at: '2025-01-30T07:53:05.000000Z'
+                        updated_at: '2025-01-30T07:53:05.000000Z'
                         pivot:
                           taggable_type: App\Models\Image
-                          taggable_id: 6
-                          tag_id: 28
+                          taggable_id: 30
+                          tag_id: 146
                     items:
                       type: object
                       properties:
                         id:
                           type: integer
-                          example: 28
+                          example: 146
                         name:
                           type: string
-                          example: et
+                          example: fugiat
                         created_at:
                           type: string
-                          example: '2025-01-29T20:56:41.000000Z'
+                          example: '2025-01-30T07:53:05.000000Z'
                         updated_at:
                           type: string
-                          example: '2025-01-29T20:56:41.000000Z'
+                          example: '2025-01-30T07:53:05.000000Z'
                         pivot:
                           type: object
                           properties:
@@ -620,10 +635,10 @@ paths:
                               example: App\Models\Image
                             taggable_id:
                               type: integer
-                              example: 6
+                              example: 30
                             tag_id:
                               type: integer
-                              example: 28
+                              example: 146
       tags:
         - Endpoints
       requestBody:
@@ -636,7 +651,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 8
+                  example: 11
                   nullable: false
       security: []
     put:
@@ -657,7 +672,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 4
+                  example: 17
                   nullable: false
       security: []
     delete:
@@ -668,13 +683,25 @@ paths:
       responses: {  }
       tags:
         - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 18
+                  nullable: false
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the image.'
-        example: 6
+        example: 30
         required: true
         schema:
           type: integer
@@ -695,19 +722,12 @@ paths:
                   type: object
                 example:
                   -
-                    id: 6
+                    id: 30
                     body: 'This is a comment on the image.'
-                    commentable_id: 6
+                    commentable_id: 30
                     commentable_type: App\Models\Image
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
-                  -
-                    id: 11
-                    body: B
-                    commentable_id: 6
-                    commentable_type: App\Models\Image
-                    created_at: '2025-01-29T21:00:47.000000Z'
-                    updated_at: '2025-01-29T21:00:47.000000Z'
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
       tags:
         - Endpoints
       security: []
@@ -729,7 +749,7 @@ paths:
                 body:
                   type: string
                   description: 'Body must be a string and is required.'
-                  example: non
+                  example: nihil
                   nullable: false
               required:
                 - body
@@ -739,7 +759,7 @@ paths:
         in: path
         name: image_id
         description: 'The ID of the image.'
-        example: 6
+        example: 30
         required: true
         schema:
           type: integer
@@ -760,41 +780,41 @@ paths:
                   type: object
                 example:
                   -
-                    id: 11
-                    author_id: 11
+                    id: 58
+                    author_id: 58
                     title: 'My first post'
                     body: 'This is the body of my first post.'
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
                     tags_ids:
-                      - 27
-                      - 28
+                      - 142
+                      - 144
                     tags:
                       -
-                        id: 27
-                        name: blanditiis
-                        created_at: '2025-01-29T20:56:41.000000Z'
-                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        id: 142
+                        name: soluta
+                        created_at: '2025-01-30T07:53:05.000000Z'
+                        updated_at: '2025-01-30T07:53:05.000000Z'
                         pivot:
                           taggable_type: App\Models\Post
-                          taggable_id: 11
-                          tag_id: 27
+                          taggable_id: 58
+                          tag_id: 142
                       -
-                        id: 28
-                        name: et
-                        created_at: '2025-01-29T20:56:41.000000Z'
-                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        id: 144
+                        name: nemo
+                        created_at: '2025-01-30T07:53:05.000000Z'
+                        updated_at: '2025-01-30T07:53:05.000000Z'
                         pivot:
                           taggable_type: App\Models\Post
-                          taggable_id: 11
-                          tag_id: 28
+                          taggable_id: 58
+                          tag_id: 144
                   -
-                    id: 12
-                    author_id: 11
+                    id: 59
+                    author_id: 58
                     title: 'My second post'
                     body: 'This is the body of my second post.'
-                    created_at: '2025-01-29T20:56:41.000000Z'
-                    updated_at: '2025-01-29T20:56:41.000000Z'
+                    created_at: '2025-01-30T07:53:05.000000Z'
+                    updated_at: '2025-01-30T07:53:05.000000Z'
                     tags_ids: []
                     tags: []
       tags:
@@ -818,23 +838,23 @@ paths:
                 author_id:
                   type: integer
                   description: 'Author ID is required and must be an integer (foreign key). The <code>id</code> of an existing record in the authors table.'
-                  example: 17
+                  example: 20
                   nullable: false
                 title:
                   type: string
                   description: 'Title is required and must be a string.'
-                  example: cum
+                  example: ab
                   nullable: false
                 body:
                   type: string
                   description: 'Body is required and must be a string.'
-                  example: totam
+                  example: consequuntur
                   nullable: false
                 tags_ids:
                   type: array
                   description: 'Tags IDs must be integers.'
                   example:
-                    - 16
+                    - 12
                   items:
                     type: integer
               required:
@@ -856,41 +876,41 @@ paths:
               schema:
                 type: object
                 example:
-                  id: 11
-                  author_id: 11
+                  id: 58
+                  author_id: 58
                   title: 'My first post'
                   body: 'This is the body of my first post.'
-                  created_at: '2025-01-29T20:56:41.000000Z'
-                  updated_at: '2025-01-29T20:56:41.000000Z'
+                  created_at: '2025-01-30T07:53:05.000000Z'
+                  updated_at: '2025-01-30T07:53:05.000000Z'
                   tags_ids:
-                    - 27
-                    - 28
+                    - 142
+                    - 144
                   tags:
                     -
-                      id: 27
-                      name: blanditiis
-                      created_at: '2025-01-29T20:56:41.000000Z'
-                      updated_at: '2025-01-29T20:56:41.000000Z'
+                      id: 142
+                      name: soluta
+                      created_at: '2025-01-30T07:53:05.000000Z'
+                      updated_at: '2025-01-30T07:53:05.000000Z'
                       pivot:
                         taggable_type: App\Models\Post
-                        taggable_id: 11
-                        tag_id: 27
+                        taggable_id: 58
+                        tag_id: 142
                     -
-                      id: 28
-                      name: et
-                      created_at: '2025-01-29T20:56:41.000000Z'
-                      updated_at: '2025-01-29T20:56:41.000000Z'
+                      id: 144
+                      name: nemo
+                      created_at: '2025-01-30T07:53:05.000000Z'
+                      updated_at: '2025-01-30T07:53:05.000000Z'
                       pivot:
                         taggable_type: App\Models\Post
-                        taggable_id: 11
-                        tag_id: 28
+                        taggable_id: 58
+                        tag_id: 144
                 properties:
                   id:
                     type: integer
-                    example: 11
+                    example: 58
                   author_id:
                     type: integer
-                    example: 11
+                    example: 58
                   title:
                     type: string
                     example: 'My first post'
@@ -899,53 +919,53 @@ paths:
                     example: 'This is the body of my first post.'
                   created_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
                   updated_at:
                     type: string
-                    example: '2025-01-29T20:56:41.000000Z'
+                    example: '2025-01-30T07:53:05.000000Z'
                   tags_ids:
                     type: array
                     example:
-                      - 27
-                      - 28
+                      - 142
+                      - 144
                     items:
                       type: integer
                   tags:
                     type: array
                     example:
                       -
-                        id: 27
-                        name: blanditiis
-                        created_at: '2025-01-29T20:56:41.000000Z'
-                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        id: 142
+                        name: soluta
+                        created_at: '2025-01-30T07:53:05.000000Z'
+                        updated_at: '2025-01-30T07:53:05.000000Z'
                         pivot:
                           taggable_type: App\Models\Post
-                          taggable_id: 11
-                          tag_id: 27
+                          taggable_id: 58
+                          tag_id: 142
                       -
-                        id: 28
-                        name: et
-                        created_at: '2025-01-29T20:56:41.000000Z'
-                        updated_at: '2025-01-29T20:56:41.000000Z'
+                        id: 144
+                        name: nemo
+                        created_at: '2025-01-30T07:53:05.000000Z'
+                        updated_at: '2025-01-30T07:53:05.000000Z'
                         pivot:
                           taggable_type: App\Models\Post
-                          taggable_id: 11
-                          tag_id: 28
+                          taggable_id: 58
+                          tag_id: 144
                     items:
                       type: object
                       properties:
                         id:
                           type: integer
-                          example: 27
+                          example: 142
                         name:
                           type: string
-                          example: blanditiis
+                          example: soluta
                         created_at:
                           type: string
-                          example: '2025-01-29T20:56:41.000000Z'
+                          example: '2025-01-30T07:53:05.000000Z'
                         updated_at:
                           type: string
-                          example: '2025-01-29T20:56:41.000000Z'
+                          example: '2025-01-30T07:53:05.000000Z'
                         pivot:
                           type: object
                           properties:
@@ -954,10 +974,10 @@ paths:
                               example: App\Models\Post
                             taggable_id:
                               type: integer
-                              example: 11
+                              example: 58
                             tag_id:
                               type: integer
-                              example: 27
+                              example: 142
       tags:
         - Endpoints
       requestBody:
@@ -970,7 +990,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 1
+                  example: 5
                   nullable: false
       security: []
     put:
@@ -991,7 +1011,7 @@ paths:
                 id:
                   type: integer
                   description: ''
-                  example: 18
+                  example: 1
                   nullable: false
       security: []
     delete:
@@ -1002,13 +1022,25 @@ paths:
       responses: {  }
       tags:
         - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 17
+                  nullable: false
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the post.'
-        example: 11
+        example: 58
         required: true
         schema:
           type: integer
@@ -1027,21 +1059,7 @@ paths:
                 type: array
                 items:
                   type: object
-                example:
-                  -
-                    id: 9
-                    body: B
-                    commentable_id: 11
-                    commentable_type: App\Models\Post
-                    created_at: '2025-01-29T20:59:46.000000Z'
-                    updated_at: '2025-01-29T20:59:46.000000Z'
-                  -
-                    id: 10
-                    body: B
-                    commentable_id: 11
-                    commentable_type: App\Models\Post
-                    created_at: '2025-01-29T20:59:53.000000Z'
-                    updated_at: '2025-01-29T20:59:53.000000Z'
+                example: []
       tags:
         - Endpoints
       security: []
@@ -1063,7 +1081,7 @@ paths:
                 body:
                   type: string
                   description: 'Body must be a string and is required.'
-                  example: repudiandae
+                  example: ipsum
                   nullable: false
               required:
                 - body
@@ -1073,7 +1091,7 @@ paths:
         in: path
         name: post_id
         description: 'The ID of the post.'
-        example: 11
+        example: 58
         required: true
         schema:
           type: integer
