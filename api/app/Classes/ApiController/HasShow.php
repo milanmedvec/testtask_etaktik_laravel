@@ -2,6 +2,7 @@
 
 namespace App\Classes\ApiController;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
@@ -10,7 +11,7 @@ trait HasShow
     use HasModel;
     use HasCache;
 
-    public function show($id)
+    public function show(mixed $id): JsonResponse
     {
         $validator = Validator::make(['id' => $id], [
             'id' => 'int',
@@ -28,7 +29,8 @@ trait HasShow
 
         $entity = $this->model->findOrFail($id);
         Cache::put($cacheKey, $entity, 60);
-        return $entity;
+
+        return response()->json($entity);
     }
 
 }

@@ -95,7 +95,7 @@ class AuthorsTest extends TestCase
 
         $response = $this->delete('/authors/' . $author->id);
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
 
         $this->assertDatabaseMissing('authors', [
             'id' => $author->id,

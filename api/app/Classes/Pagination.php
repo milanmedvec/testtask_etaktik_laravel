@@ -2,6 +2,7 @@
 
 namespace App\Classes;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class Pagination
@@ -16,14 +17,12 @@ class Pagination
         $this->request = $request;
     }
 
-    public function applyFilter($query)
+    public function applyFilter(Builder $query): void
     {
         $filterSe = $this->request->input('filter', null);
         $filter = json_decode($filterSe, true);
 
-        if ($filter === null) {
-            return [];
-        } else {
+        if ($filter !== null) {
             foreach ($filter as $key => $value) {
                 if (is_array($value)) {
                     $query->whereIn($key, $value);

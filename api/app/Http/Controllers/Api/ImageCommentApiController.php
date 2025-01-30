@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
 use App\Models\Image;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ImageCommentApiController extends Controller
 {
 
-    public function index(Image $image)
+    public function index(Image $image): JsonResponse
     {
         $count = $image->comments()->count();
         $items = $image->comments()->get();
@@ -20,14 +20,16 @@ class ImageCommentApiController extends Controller
         ]);
     }
 
-    public function store(Request $request, Image $image)
+    public function store(Request $request, Image $image): JsonResponse
     {
         $validated = $request->validate([
             // Body must be a string and is required
             'body' => 'required|string',
         ]);
 
-        return $image->comments()->create($validated);
+        $comment = $image->comments()->create($validated);
+
+        return response()->json($comment, 201);
     }
 
 }

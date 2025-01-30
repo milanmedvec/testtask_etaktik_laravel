@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Author extends Model
 {
@@ -23,12 +24,12 @@ class Author extends Model
     // ---------------------------- //
     // relations
 
-    public function posts()
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    public function images()
+    public function images(): HasMany
     {
         return $this->hasMany(Image::class);
     }

@@ -6,6 +6,7 @@ use App\Classes\ApiController\HasDestroy;
 use App\Classes\ApiController\HasIndex;
 use App\Classes\ApiController\HasShow;
 use App\Models\Tag;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
@@ -22,17 +23,19 @@ class TagApiController extends ApiController
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
             // Name is required and must be a string
             'name' => 'required|string',
         ]);
 
-        return Tag::create($validated);
+        $tag = Tag::create($validated);
+
+        return response()->json($tag, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, mixed $id): JsonResponse
     {
         $validator = Validator::make(['id' => $id], [
             'id' => 'int',
@@ -53,6 +56,6 @@ class TagApiController extends ApiController
         $tag = Tag::findOrFail($id);
         $tag->update($validated);
 
-        return $tag;
+        return response()->json($tag);
     }
 }

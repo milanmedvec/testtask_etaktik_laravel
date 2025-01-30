@@ -6,6 +6,7 @@ use App\Classes\ApiController\HasDestroy;
 use App\Classes\ApiController\HasIndex;
 use App\Classes\ApiController\HasShow;
 use App\Models\Image;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,7 @@ class ImageApiController extends ApiController
         parent::__construct(new Image());
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
             // Author ID is required and must be an integer (foreign key)
@@ -43,10 +44,10 @@ class ImageApiController extends ApiController
             $image->tags()->sync($tags);
         }
 
-        return $image;
+        return response()->json($image, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, mixed $id): JsonResponse
     {
         $validator = Validator::make(['id' => $id], [
             'id' => 'int',
@@ -80,7 +81,7 @@ class ImageApiController extends ApiController
             $image->tags()->sync($tags);
         }
 
-        return $image;
+        return response()->json($image);
     }
 
 }

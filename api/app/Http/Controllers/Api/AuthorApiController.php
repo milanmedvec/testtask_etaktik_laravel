@@ -6,6 +6,7 @@ use App\Classes\ApiController\HasDestroy;
 use App\Classes\ApiController\HasIndex;
 use App\Classes\ApiController\HasShow;
 use App\Models\Author;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,7 @@ class AuthorApiController extends ApiController
         parent::__construct(new Author());
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
             // First Name is required and must be a string
@@ -30,10 +31,12 @@ class AuthorApiController extends ApiController
             'last_name' => 'required|string',
         ]);
 
-        return Author::create($validated);
+        $author = Author::create($validated);
+
+        return response()->json($author, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, mixed $id): JsonResponse
     {
         $validator = Validator::make(['id' => $id], [
             'id' => 'int',
@@ -56,6 +59,6 @@ class AuthorApiController extends ApiController
         $model = Author::findOrFail($id);
         $model->update($validated);
 
-        return $model;
+        return response()->json($model);
     }
 }

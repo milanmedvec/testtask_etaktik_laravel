@@ -96,7 +96,11 @@ class PostsTest extends TestCase
 
         $response = $this->delete('/posts/' . $post->id);
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
+
+        $this->assertDatabaseMissing('posts', [
+            'id' => $post->id,
+        ]);
     }
 
 }

@@ -85,7 +85,7 @@ class TagsTest extends TestCase
 
         $response = $this->delete('/tags/' . $tag->id);
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
 
         $this->assertDatabaseMissing('tags', [
             'id' => $tag->id,

@@ -6,7 +6,7 @@ trait HasCache
 {
     use HasModel;
 
-    protected function getEntityCacheKey($id)
+    protected function getEntityCacheKey(int $id): string
     {
         $modelName = $this->model->getModel()->getTable();
         return $modelName . '.' . $id;

@@ -3,13 +3,14 @@
 namespace App\Classes\ApiController;
 
 use App\Classes\Pagination;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 trait HasIndex
 {
     use HasModel;
 
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         $query = $this->model->query();
 

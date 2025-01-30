@@ -105,7 +105,7 @@ class ImagesTest extends TestCase
 
         $response = $this->delete('/images/' . $image->id);
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
 
         $this->assertDatabaseMissing('images', [
             'id' => $image->id,
@@ -157,7 +157,7 @@ class ImagesTest extends TestCase
         // delete comment
         $response = $this->delete('/comments/' . $comment->id);
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
 
         // load comments under an image
         $response = $this->get('/images/' . $image->id . '/comments');

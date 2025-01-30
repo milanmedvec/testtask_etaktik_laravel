@@ -6,6 +6,7 @@ use App\Classes\ApiController\HasDestroy;
 use App\Classes\ApiController\HasIndex;
 use App\Classes\ApiController\HasShow;
 use App\Models\Post;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,7 @@ class PostApiController extends ApiController
         parent::__construct(new Post());
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
             // Author ID is required and must be an integer (foreign key)
@@ -43,10 +44,10 @@ class PostApiController extends ApiController
             $post->tags()->sync($tags);
         }
 
-        return $post;
+        return response()->json($post, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, mixed $id): JsonResponse
     {
         $validator = Validator::make(['id' => $id], [
             'id' => 'int',
@@ -80,6 +81,6 @@ class PostApiController extends ApiController
             $post->tags()->sync($tags);
         }
 
-        return $post;
+        return response()->json($post);
     }
 }
